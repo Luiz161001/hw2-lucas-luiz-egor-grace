@@ -1,0 +1,36 @@
+Feature: Turning on the kettle remotely
+
+Background:
+Given The senior wants to boil the water
+And senior has his device with him
+And both senior and his family created accounts in the app
+And the house system can turn on and off appliances
+
+Scenario: Logging into mobile app
+Given The senior remembers his account information
+When The senior logs into the app
+Then The app shows control panel for the senior house
+
+Scenario: Family members are logging into mobile app
+Given The senior forgot his account information
+When The senior calls his family
+And Family members log in the app
+Then The app shows control panel for the senior house
+
+Scenario: Turning on the kettle
+Given The senior or his family is in the account
+When Water is in the kettle
+And Water is not boiled
+Then System turns on the kettle
+And Sends confirmation message
+
+Scenario: Turning on the kettle fails
+Given The senior or his family is in the account
+When There is no water in the kettle
+Then Send message "No water"
+
+Scenario: Turning on the kettle fails(2)
+Given The senior or his family is in the account
+When Water is in the kettle
+And Water is boiled
+Then Send message "Water is boiled"
